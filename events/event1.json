@@ -1,7 +1,7 @@
 {
   "s3_bucket": "test-bucket-gde",
   "s3_keyspace": "c4c_ticket_collection",
-  "run_time": "18:30:00",
+  "run_time": "18:30:01",
   "userId": "KADATALAKERFC",
   "password":"Welcome5",
   "count_api_base": "https://my319918.crm.ondemand.com/sap/c4c/odata/cust/v1/kadatalake/ServiceRequestCollection/?$filter=((ProcessingTypeCode eq 'ZVEC' or ProcessingTypeCode eq 'ZTSS' or ProcessingTypeCode eq 'ZRSA' or ProcessingTypeCode eq 'ZWLC' or ProcessingTypeCode eq 'ZACS' or ProcessingTypeCode eq 'SRRQ' or ProcessingTypeCode eq 'ZSUR' or ProcessingTypeCode eq 'ZRCS' ) and LastChangeDateTime ge datetimeoffset'{0}T{1}Z')&$top=1&$format=json&$inlinecount=allpages",
