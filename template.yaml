@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  c4c_ticket
+
+  Sample SAM Template for c4c_ticket
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 600
+
+Resources:
+  C4cTicketCollectionFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      FunctionName: c4c_ticket_fn
+      Description: Get c4c data and load it to s3 bucket
+      Role: arn:aws:iam::301940180730:role/myLambdaRole
+      CodeUri: c4c_ticket/
+      Handler: c4c_ticket_collection.lambda_handler
+      Runtime: python3.7
+      Events:
+        GetC4Cdata:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /c4c
+            Method: get
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  c4cTicketApi:
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/c4c/"
+  C4cTicketCollectionFunction:
+    Description: "Hello World Lambda Function ARN"
+    Value: !GetAtt C4cTicketCollectionFunction.Arn

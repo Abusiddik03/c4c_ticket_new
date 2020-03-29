@@ -1,0 +1,10 @@
+version 0.1
+phases:
+  install:
+    commands:
+      - aws cloudformation package --template-file template.yaml --s3-bucket test-bucket-gde --output-template-file outputSamTemplate.yaml
+artificats:
+  type: zip
+  files:
+    - template.yaml
+    - outputSamTemplate.yaml
