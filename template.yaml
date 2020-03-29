@@ -1,9 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: >
-  c4c_ticket
-
-  Sample SAM Template for c4c_ticket
+Description: Sample SAM Template for c4c_ticket
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -17,7 +14,7 @@ Resources:
       FunctionName: c4c_ticket_fn
       Description: Get c4c data and load it to s3 bucket
       Role: arn:aws:iam::301940180730:role/myLambdaRole
-      CodeUri: c4c_ticket/
+      CodeUri: ./c4c_ticket
       Handler: c4c_ticket_collection.lambda_handler
       Runtime: python3.7
       Events:
