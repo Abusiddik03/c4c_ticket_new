@@ -14,7 +14,6 @@ from dateutil.parser import parse
 from datetime import date, timedelta
 import xmltodict
 import requests
-import base64
 import boto3
 import time
 import csv
@@ -24,6 +23,12 @@ import os
 sns_client = boto3.client('sns')
 s3 = boto3.client('s3')
 s3Resource = boto3.resource('s3')
+
+
+def new_function():
+    #This function is added just to reflect the changes in Lambda funciton
+    return True
+
 
 # Actual part of extracting Ticket Collection Data
 def get_ticket_data(user_name, password, event, account_id, region_name):
